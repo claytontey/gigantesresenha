@@ -10,17 +10,23 @@ O código foi desenvolvido na linguagem *Python* utilizando várias bibliotecas,
 Será necessário a criação de mais outro arquivo, o **setup.sh** contendo as seguintes linhas de código:
 
 '''
-
 mkdir -p ~/.streamlit/
-echo "[general]
-email = \"**Seu endereço de e-mail**\"
-" > ~/.streamlit/credentials.toml
-echo "[server]
-headless = true
-port = $PORT
-enableCORS = false
-" > ~/.streamlit/config.toml
 
+echo "[general]
+
+email = \"**Seu endereço de e-mail**\"
+
+" > ~/.streamlit/credentials.toml
+
+echo "[server]
+
+headless = true
+
+port = $PORT
+
+enableCORS = false
+
+" > ~/.streamlit/config.toml
 '''
 
 ## Acesso e contato:
