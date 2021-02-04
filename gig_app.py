@@ -44,7 +44,7 @@ if choice == 'Janeiro-21':
     if st.sidebar.checkbox('Mostrar Tabela'):
         st.markdown("Tabela de Dados")
         # exibindo os top 8 registro do dataframe
-        st.dataframe(df[st_ms])
+        st.dataframe(df[st_ms].sort_values(by=['Media'], ascending=False))
         
     
 
