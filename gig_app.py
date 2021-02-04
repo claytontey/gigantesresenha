@@ -44,7 +44,7 @@ if choice == 'Janeiro-21':
     if st.sidebar.checkbox('Mostrar Tabela'):
         st.markdown("Tabela de Dados")
         # exibindo os top 8 registro do dataframe
-        st.dataframe(df[st_ms].head(10))
+        st.dataframe(df[st_ms])
         
     
 
@@ -55,6 +55,7 @@ if choice == 'Janeiro-21':
     if btn_predict:
         #st.subheader("Média Geral:")
         st.write('Média geral =  %.2f' %df.Media.mean())
+        st.write('Quantidade de Jogadores = ',len(df))
         st.write('Maior Nota: ',df[df['30/1/2021'] > 9])
         st.write('Top 3 Gigantes: ',df[df['Media'] > 5][:3])
         st.write('Nem na Facol: ',df[df['Media'] < 5][:3])
