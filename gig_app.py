@@ -33,6 +33,12 @@ if choice == 'Janeiro-21':
     df = get_data()
     df['Media'] = df.iloc[:,1:5].mean(axis=1)
    
+    sab1 = pd.DataFrame(df,columns = ['JOGADOR',df.columns[1]])
+    sab2 = pd.DataFrame(df,columns = ['JOGADOR',df.columns[2]])
+    sab3 = pd.DataFrame(df,columns = ['JOGADOR',df.columns[3]])
+    sab4 = pd.DataFrame(df,columns = ['JOGADOR',df.columns[4]])
+
+
    # verificando o dataset
     st.subheader("Notas por dia jogado")
 
@@ -49,16 +55,28 @@ if choice == 'Janeiro-21':
     
 
     # inserindo um botão na tela
-    btn_predict = st.sidebar.button("Melhores Resultados")
+    btn_dados = st.sidebar.button("Dados Gerais")
 
     # verifica se o botão foi acionado
-    if btn_predict:
+    if btn_dados:
         #st.subheader("Média Geral:")
         st.write('Média geral =  %.2f' %df.Media.mean())
         st.write('Quantidade de Jogadores = ',len(df))
-        st.write('Maior Nota: ',df[df['30/1/2021'] > 9])
-        st.write('Top 3 Gigantes: ',df[df['Media'] > 5][:3])
-        st.write('Nem na Facol: ',df[df['Media'] < 5][:3])
+
+    btn_melhores = st.sidebar.button("Melhores Notas")
+    if btn_melhores:
+        st.write('Maior Nota sabado 1: ',sab1[sab1[df.columns[1]] >= 8])
+        st.write('Maior Nota sabado 2: ',sab2[sab2[df.columns[2]] >= 8])
+        st.write('Maior Nota sabado 3: ',sab3[sab3[df.columns[3]] >= 9])
+        st.write('Maior Nota sabado 4: ',sab4[sab4[df.columns[4]] >= 9])
+
+    btn_piores = st.sidebar.button("Nem na Facol")
+    if btn_piores:
+        st.write('Menor Nota sabado 1: ',sab1[sab1[df.columns[1]] <= 5][:3])
+        st.write('Menor Nota sabado 2: ',sab2[sab2[df.columns[2]] <= 5][:1])
+        st.write('Menor Nota sabado 3: ',sab3[sab3[df.columns[3]] <= 5][:1])
+        st.write('Menor Nota sabado 4: ',sab4[sab4[df.columns[4]] <= 5][:2])
+        
 
 
 elif choice == 'Fevereiro-21':
@@ -119,7 +137,6 @@ else:
 
 
 
-# mapeando dados do usuário para cada atributo
 
 
 
