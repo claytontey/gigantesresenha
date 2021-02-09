@@ -8,10 +8,11 @@ import seaborn as sns
 
 
 
+
 # função para carregar o dataset
 #@st.cache
-def get_data():
-    return pd.read_csv("janeiro.csv")
+def get_data(files):
+    return pd.read_csv(files)
 
 def get_image():
     return st.image('gigantes.png', output_format="PNG")
@@ -30,8 +31,17 @@ choice = st.sidebar.selectbox("Menu",menu)
 if choice == 'Janeiro-21':
 
     # criando um dataframe
-    df = get_data()
-    df['Media'] = df.iloc[:,1:5].mean(axis=1)
+    df = get_data("janeiro.csv")
+    df['Freq'] = df.iloc[:,1:5].apply(lambda x: x!=0, axis=1).sum(axis=1)
+    df['Media'] = df.iloc[:,1:5].sum(axis=1) / df['Freq']
+
+    # Melhor jogador do mês
+    maior = pd.DataFrame(df,columns = ['JOGADOR',df.columns[6]])
+
+
+    # Pior do mês
+    pior = pd.DataFrame(df,columns = ['JOGADOR',df.columns[6]])
+
    
     sab1 = pd.DataFrame(df,columns = ['JOGADOR',df.columns[1]])
     sab2 = pd.DataFrame(df,columns = ['JOGADOR',df.columns[2]])
@@ -62,6 +72,8 @@ if choice == 'Janeiro-21':
         #st.subheader("Média Geral:")
         st.write('Média geral =  %.2f' %df.Media.mean())
         st.write('Quantidade de Jogadores = ',len(df))
+        st.write('Melhores jogadorores de Janeiro: ',maior[maior[df.columns[6]] >= 6][:3])
+        st.write('O importante é participar: ',pior[pior[df.columns[6]] <= 4][:3])
 
     btn_melhores = st.sidebar.button("Melhores Notas")
     if btn_melhores:
@@ -72,17 +84,63 @@ if choice == 'Janeiro-21':
 
     btn_piores = st.sidebar.button("Nem na Facol")
     if btn_piores:
-        st.write('Menor Nota sabado 1: ',sab1[sab1[df.columns[1]] <= 5][:3])
+        st.write('Menor Nota sabado 1: ',sab1[sab1[df.columns[1]] == 6.98])
         st.write('Menor Nota sabado 2: ',sab2[sab2[df.columns[2]] <= 5][:1])
-        st.write('Menor Nota sabado 3: ',sab3[sab3[df.columns[3]] <= 5][:1])
-        st.write('Menor Nota sabado 4: ',sab4[sab4[df.columns[4]] <= 5][:2])
+        st.write('Menor Nota sabado 3: ',sab3[sab3[df.columns[3]] <= 3][:1])
+        st.write('Menor Nota sabado 4: ',sab4[sab4[df.columns[4]] == 3])
         
 
 
 elif choice == 'Fevereiro-21':
-    st.title('Arquivo com os dados ainda não disponível!')
-    st.subheader('**Enquanto isso, curta a foto do atual campeão :-)**')
-    get_image()
+    # criando um dataframe
+    df = get_data("fevereiro.csv")
+    df['Freq'] = df.iloc[:,1:5].apply(lambda x: x!=0, axis=1).sum(axis=1)
+    df['Media'] = df.iloc[:,1:5].sum(axis=1) / df['Freq']
+   
+    sab1 = pd.DataFrame(df,columns = ['JOGADOR',df.columns[1]])
+    sab2 = pd.DataFrame(df,columns = ['JOGADOR',df.columns[2]])
+    sab3 = pd.DataFrame(df,columns = ['JOGADOR',df.columns[3]])
+    sab4 = pd.DataFrame(df,columns = ['JOGADOR',df.columns[4]])
+
+
+   # verificando o dataset
+    st.subheader("Notas por dia jogado")
+
+    # atributos para serem exibidos por padrão
+    defaultcols = ["JOGADOR","6/2/2021","13/2/2021","20/2/2021","27/2/2021","Freq","Media"] 
+    st_ms = st.multiselect("Valores", df.columns.tolist(), default=defaultcols)
+    
+    st.sidebar.header('Configurações')
+    if st.sidebar.checkbox('Mostrar Tabela'):
+        st.markdown("Tabela de Dados")
+        # exibindo os top 8 registro do dataframe
+        st.dataframe(df[st_ms].sort_values(by=['Media'], ascending=False))
+        
+    
+
+    # inserindo um botão na tela
+    btn_dados = st.sidebar.button("Dados Gerais")
+
+    # verifica se o botão foi acionado
+    if btn_dados:
+        #st.subheader("Média Geral:")
+        st.write('Média geral =  %.2f' %df.Media.mean())
+        st.write('Quantidade de Jogadores = ',len(df))
+
+    btn_melhores = st.sidebar.button("Melhores Notas")
+    if btn_melhores:
+        st.write('Maior Nota sabado 1: ',sab1[sab1[df.columns[1]] >= 8])
+        #st.write('Maior Nota sabado 2: ',sab2[sab2[df.columns[2]] >= 8])
+        #st.write('Maior Nota sabado 3: ',sab3[sab3[df.columns[3]] >= 9])
+        #st.write('Maior Nota sabado 4: ',sab4[sab4[df.columns[4]] >= 9])
+
+    btn_piores = st.sidebar.button("Nem na Facol")
+    if btn_piores:
+        st.write('Menor Nota sabado 1: ',sab1[sab1[df.columns[1]] <= 4][:3])
+        #st.write('Menor Nota sabado 2: ',sab2[sab2[df.columns[2]] <= 5][:1])
+        #st.write('Menor Nota sabado 3: ',sab3[sab3[df.columns[3]] <= 5][:1])
+        #st.write('Menor Nota sabado 4: ',sab4[sab4[df.columns[4]] <= 5][:2])
+        
 
 elif choice == 'Março-21':
     st.title('Arquivo com os dados ainda não disponível!')
