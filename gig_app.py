@@ -33,7 +33,7 @@ if choice == 'Janeiro-21':
     # criando um dataframe
     df = get_data("janeiro.csv")
     df['Freq'] = df.iloc[:,1:5].apply(lambda x: x!=0, axis=1).sum(axis=1)
-    df['Media'] = df.iloc[:,1:5].sum(axis=1) / df['Freq']
+    df['Media'] = df.iloc[:,1:5].mean(axis=1)
 
     # Melhor jogador do mês
     maior = pd.DataFrame(df,columns = ['JOGADOR',df.columns[6]])
@@ -95,7 +95,8 @@ elif choice == 'Fevereiro-21':
     # criando um dataframe
     df = get_data("fevereiro.csv")
     df['Freq'] = df.iloc[:,1:5].apply(lambda x: x!=0, axis=1).sum(axis=1)
-    df['Media'] = df.iloc[:,1:5].sum(axis=1) / df['Freq']
+    #df['Media'] = df.iloc[:,1:5].sum(axis=1) / df['Freq']
+    df['Media'] = df.iloc[:,1:3].mean(axis=1) 
    
     sab1 = pd.DataFrame(df,columns = ['JOGADOR',df.columns[1]])
     sab2 = pd.DataFrame(df,columns = ['JOGADOR',df.columns[2]])
@@ -130,14 +131,14 @@ elif choice == 'Fevereiro-21':
     btn_melhores = st.sidebar.button("Melhores Notas")
     if btn_melhores:
         st.write('Maior Nota sabado 1: ',sab1[sab1[df.columns[1]] >= 8])
-        #st.write('Maior Nota sabado 2: ',sab2[sab2[df.columns[2]] >= 8])
+        st.write('Maior Nota sabado 2: ',sab2[sab2[df.columns[2]] >= 8])
         #st.write('Maior Nota sabado 3: ',sab3[sab3[df.columns[3]] >= 9])
         #st.write('Maior Nota sabado 4: ',sab4[sab4[df.columns[4]] >= 9])
 
     btn_piores = st.sidebar.button("Nem na Facol")
     if btn_piores:
         st.write('Menor Nota sabado 1: ',sab1[sab1[df.columns[1]] <= 4][:3])
-        #st.write('Menor Nota sabado 2: ',sab2[sab2[df.columns[2]] <= 5][:1])
+        st.write('Menor Nota sabado 2: ',sab2[sab2[df.columns[2]] == 3.2])
         #st.write('Menor Nota sabado 3: ',sab3[sab3[df.columns[3]] <= 5][:1])
         #st.write('Menor Nota sabado 4: ',sab4[sab4[df.columns[4]] <= 5][:2])
         
