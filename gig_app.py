@@ -96,7 +96,7 @@ elif choice == 'Fevereiro-21':
     df = get_data("fevereiro.csv")
     df['Freq'] = df.iloc[:,1:5].apply(lambda x: x!=0, axis=1).sum(axis=1)
     #df['Media'] = df.iloc[:,1:5].sum(axis=1) / df['Freq']
-    df['Media'] = df.iloc[:,1:3].mean(axis=1) 
+    df['Media'] = df.iloc[:,1:4].mean(axis=1) 
    
     sab1 = pd.DataFrame(df,columns = ['JOGADOR',df.columns[1]])
     sab2 = pd.DataFrame(df,columns = ['JOGADOR',df.columns[2]])
