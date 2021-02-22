@@ -132,7 +132,7 @@ elif choice == 'Fevereiro-21':
     if btn_melhores:
         st.write('Maior Nota sabado 1: ',sab1[sab1[df.columns[1]] >= 8])
         st.write('Maior Nota sabado 2: ',sab2[sab2[df.columns[2]] >= 8])
-        st.write('Maior Nota sabado 3: ',sab3[sab3[df.columns[3]] >= 6])
+        st.write('Maior Nota sabado 3: ',sab3[sab3[df.columns[3]] > 8])
         #st.write('Maior Nota sabado 4: ',sab4[sab4[df.columns[4]] >= 9])
 
     btn_piores = st.sidebar.button("Nem na Facol")
