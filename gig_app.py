@@ -87,10 +87,10 @@ if choice == 'Janeiro-21':
 
     btn_piores = st.sidebar.button("Nem na Facol")
     if btn_piores:
-        st.write('Menor Nota sabado 1: ',sab1[sab1.iloc[:, 1] <=5])
-        st.write('Menor Nota sabado 2: ',sab2[sab2.iloc[:, 1] <=5])
-        st.write('Menor Nota sabado 3: ',sab3[sab3.iloc[:, 1] <=3])
-        st.write('Menor Nota sabado 4: ',sab4[sab4.iloc[:, 1] <=3])
+        st.write('Menor Nota sabado 1: ',sab1[sab1.iloc[:, 1] < 6])
+        st.write('Menor Nota sabado 2: ',sab2[sab2.iloc[:, 1] <= 4])
+        st.write('Menor Nota sabado 3: ',sab3[sab3.iloc[:, 1] <= 3])
+        st.write('Menor Nota sabado 4: ',sab4[sab4.iloc[:, 1] <= 3])
 
     # inserindo um botão na tela
     btn_Melhor_mes = st.sidebar.button("Melhor jogador do mês")
@@ -107,23 +107,28 @@ if choice == 'Janeiro-21':
 elif choice == 'Fevereiro-21':
     # criando um dataframe
     df = get_data("fevereiro.csv")
+
     df['Freq'] = df.iloc[:,1:5].apply(lambda x: x!=0, axis=1).sum(axis=1)
     #df['Media'] = df.iloc[:,1:5].sum(axis=1) / df['Freq']
     df['Media'] = df.iloc[:,1:5].mean(axis=1) 
 
+    # Lançamento das notas por sábado
+    sab1 = pd.DataFrame(df,columns = ['JOGADOR',df.columns[1]])
+    sab1 = sab1.loc[(sab1!=0).all(axis=1)]
+    sab2 = pd.DataFrame(df,columns = ['JOGADOR',df.columns[2]])
+    sab2 = sab2.loc[(sab2!=0).all(axis=1)]
+    sab3 = pd.DataFrame(df,columns = ['JOGADOR',df.columns[3]])
+    sab3 = sab3.loc[(sab3!=0).all(axis=1)]
+    sab4 = pd.DataFrame(df,columns = ['JOGADOR',df.columns[4]])
+    sab4 = sab4.loc[(sab4!=0).all(axis=1)]
+
     # Melhor jogador do mês
     maior = pd.DataFrame(df,columns = ['JOGADOR',df.columns[6]])
 
-
     # Pior do mês
     pior = pd.DataFrame(df,columns = ['JOGADOR',df.columns[6]])
-   
-    sab1 = pd.DataFrame(df,columns = ['JOGADOR',df.columns[1]])
-    sab2 = pd.DataFrame(df,columns = ['JOGADOR',df.columns[2]])
-    sab3 = pd.DataFrame(df,columns = ['JOGADOR',df.columns[3]])
-    sab4 = pd.DataFrame(df,columns = ['JOGADOR',df.columns[4]])
-
-
+    
+    
    # verificando o dataset
     st.subheader("Notas por dia jogado")
 
@@ -157,10 +162,11 @@ elif choice == 'Fevereiro-21':
 
     btn_piores = st.sidebar.button("Nem na Facol")
     if btn_piores:
-        st.write('Menor Nota sabado 1: ',sab1[sab1[df.columns[1]] <= 4][:3])
-        st.write('Menor Nota sabado 2: ',sab2[sab2[df.columns[2]] == 3.2])
-        st.write('Menor Nota sabado 3: ',sab3[sab3[df.columns[3]] == 4])
-        st.write('Menor Nota sabado 4: ',sab4[sab4[df.columns[4]] <= 4][:3])
+        st.write('Menor Nota sabado 1: ',sab1[sab1.iloc[:, 1] <= 4])
+        st.write('Menor Nota sabado 2: ',sab2[sab2.iloc[:, 1] < 4])
+        st.write('Menor Nota sabado 3: ',sab3[sab3.iloc[:, 1] <= 4])
+        st.write('Menor Nota sabado 4: ',sab4[sab4.iloc[:, 1] < 3])
+
 
     # inserindo um botão na tela
     btn_Melhor_mes = st.sidebar.button("Melhor jogador do mês")
