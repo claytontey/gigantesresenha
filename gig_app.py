@@ -87,7 +87,7 @@ if choice == 'Janeiro-21':
 
     btn_piores = st.sidebar.button("Nem na Facol")
     if btn_piores:
-        st.write('Menor Nota sabado 1: ',sab1[sab1.iloc[:, 1] < 6])
+        st.write('Menor Nota sabado 1: ',sab1[sab1.iloc[:, 1] < 7])
         st.write('Menor Nota sabado 2: ',sab2[sab2.iloc[:, 1] <= 4])
         st.write('Menor Nota sabado 3: ',sab3[sab3.iloc[:, 1] <= 3])
         st.write('Menor Nota sabado 4: ',sab4[sab4.iloc[:, 1] <= 3])
@@ -95,12 +95,12 @@ if choice == 'Janeiro-21':
     # inserindo um botão na tela
     btn_Melhor_mes = st.sidebar.button("Melhor jogador do mês")
     if btn_Melhor_mes:
-        st.write('Melhores jogadorores de Janeiro: ',maior[maior[df.columns[6]] >= 6][:3])
+        st.write('Melhores jogadorores de Janeiro: ',maior[maior[df.columns[6]] >= 6.5][:3])
     
 
     btn_Pior_mes = st.sidebar.button("Pior jogador do mês")
     if btn_Pior_mes:
-        st.write('O importante é participar: ',pior[pior[df.columns[6]] <= 4][:3])
+        st.write('O importante é participar: ',pior[pior[df.columns[6]] <= 2][:3])
         
 
 
@@ -171,7 +171,7 @@ elif choice == 'Fevereiro-21':
     # inserindo um botão na tela
     btn_Melhor_mes = st.sidebar.button("Melhor jogador do mês")
     if btn_Melhor_mes:
-        st.write('Melhores jogadorores de Fevereiro: ',maior[maior[df.columns[6]] >= 6][:3])
+        st.write('Melhores jogadorores de Fevereiro: ',maior[maior[df.columns[6]] > 7][:3])
 
     btn_Pior_mes = st.sidebar.button("Pior jogador do mês")
     if btn_Pior_mes:
