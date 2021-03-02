@@ -149,7 +149,7 @@ elif choice == 'Fevereiro-21':
         st.write('Menor Nota sabado 1: ',sab1[sab1[df.columns[1]] <= 4][:3])
         st.write('Menor Nota sabado 2: ',sab2[sab2[df.columns[2]] == 3.2])
         st.write('Menor Nota sabado 3: ',sab3[sab3[df.columns[3]] == 4])
-        st.write('Menor Nota sabado 4: ',sab4[sab4[df.columns[4]] <= 5][:)
+        st.write('Menor Nota sabado 4: ',sab4[sab4[df.columns[4]] <= 5])
 
     # inserindo um botão na tela
     btn_Melhor_mes = st.sidebar.button("Melhor jogador do mês")
