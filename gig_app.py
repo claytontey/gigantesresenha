@@ -87,10 +87,10 @@ if choice == 'Janeiro-21':
 
     btn_piores = st.sidebar.button("Nem na Facol")
     if btn_piores:
-        st.write('Menor Nota sabado 1: ',sab1[sab1.iloc[:, 1] <=5]])
-        st.write('Menor Nota sabado 2: ',sab2[sab2.iloc[:, 1] <=5]])
-        st.write('Menor Nota sabado 3: ',sab3[sab3.iloc[:, 1] <=3]])
-        st.write('Menor Nota sabado 4: ',sab4[sab4.iloc[:, 1] <=3]])
+        st.write('Menor Nota sabado 1: ',sab1[sab1.iloc[:, 1] <=5])
+        st.write('Menor Nota sabado 2: ',sab2[sab2.iloc[:, 1] <=5])
+        st.write('Menor Nota sabado 3: ',sab3[sab3.iloc[:, 1] <=3])
+        st.write('Menor Nota sabado 4: ',sab4[sab4.iloc[:, 1] <=3])
 
     # inserindo um botão na tela
     btn_Melhor_mes = st.sidebar.button("Melhor jogador do mês")
