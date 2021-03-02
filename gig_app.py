@@ -106,6 +106,13 @@ elif choice == 'Fevereiro-21':
     df['Freq'] = df.iloc[:,1:5].apply(lambda x: x!=0, axis=1).sum(axis=1)
     #df['Media'] = df.iloc[:,1:5].sum(axis=1) / df['Freq']
     df['Media'] = df.iloc[:,1:5].mean(axis=1) 
+
+    # Melhor jogador do mês
+    maior = pd.DataFrame(df,columns = ['JOGADOR',df.columns[6]])
+
+
+    # Pior do mês
+    pior = pd.DataFrame(df,columns = ['JOGADOR',df.columns[6]])
    
     sab1 = pd.DataFrame(df,columns = ['JOGADOR',df.columns[1]])
     sab2 = pd.DataFrame(df,columns = ['JOGADOR',df.columns[2]])
@@ -149,12 +156,12 @@ elif choice == 'Fevereiro-21':
         st.write('Menor Nota sabado 1: ',sab1[sab1[df.columns[1]] <= 4][:3])
         st.write('Menor Nota sabado 2: ',sab2[sab2[df.columns[2]] == 3.2])
         st.write('Menor Nota sabado 3: ',sab3[sab3[df.columns[3]] == 4])
-        st.write('Menor Nota sabado 4: ',sab4[sab4[df.columns[4]] <= 5])
+        st.write('Menor Nota sabado 4: ',sab4[sab4[df.columns[4]] <= 4][:3])
 
     # inserindo um botão na tela
     btn_Melhor_mes = st.sidebar.button("Melhor jogador do mês")
     if btn_Melhor_mes:
-        st.write('Melhores jogadorores de Janeiro: ',maior[maior[df.columns[6]] >= 6][:3])
+        st.write('Melhores jogadorores de Fevereiro: ',maior[maior[df.columns[6]] >= 6][:3])
 
     btn_Pior_mes = st.sidebar.button("Pior jogador do mês")
     if btn_Pior_mes:
