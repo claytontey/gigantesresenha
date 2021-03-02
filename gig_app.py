@@ -92,7 +92,7 @@ if choice == 'Janeiro-21':
     btn_Melhor_mes = st.sidebar.button("Melhor jogador do mês")
     if btn_Melhor_mes:
         st.write('Melhores jogadorores de Janeiro: ',maior[maior[df.columns[6]] >= 6][:3])
-        )
+    
 
     btn_Pior_mes = st.sidebar.button("Pior jogador do mês")
     if btn_Pior_mes:
