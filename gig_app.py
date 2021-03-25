@@ -184,7 +184,7 @@ elif choice == 'Março-21':
 
     df['Freq'] = df.iloc[:,1:5].apply(lambda x: x!=0, axis=1).sum(axis=1)
     #df['Media'] = df.iloc[:,1:5].sum(axis=1) / df['Freq']
-    df['Media'] = df.iloc[:,1:5].mean(axis=1) 
+    df['Media'] = df.iloc[:,1].mean(axis=1) 
 
     # Lançamento das notas por sábado
     sab1 = pd.DataFrame(df,columns = ['JOGADOR',df.columns[1]])
