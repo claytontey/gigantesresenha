@@ -184,7 +184,7 @@ elif choice == 'Março-21':
 
     df['Freq'] = df.iloc[:,1:5].apply(lambda x: x!=0, axis=1).sum(axis=1)
     #df['Media'] = df.iloc[:,1:5].sum(axis=1) / df['Freq']
-    df['Media'] = df.iloc[:,1].mean(axis=1) 
+    df['Media'] = df.iloc[:,1:2].mean(axis=1) 
 
     # Lançamento das notas por sábado
     sab1 = pd.DataFrame(df,columns = ['JOGADOR',df.columns[1]])
@@ -230,26 +230,26 @@ elif choice == 'Março-21':
     btn_melhores = st.sidebar.button("Melhores Notas")
     if btn_melhores:
         st.write('Maior Nota sabado 1: ',sab1[sab1[df.columns[1]] >= 8])
-        st.write('Maior Nota sabado 2: ',sab2[sab2[df.columns[2]] >= 8])
-        st.write('Maior Nota sabado 3: ',sab3[sab3[df.columns[3]] > 8])
-        st.write('Maior Nota sabado 4: ',sab4[sab4[df.columns[4]] >= 9])
+        #st.write('Maior Nota sabado 2: ',sab2[sab2[df.columns[2]] >= 8])
+        #st.write('Maior Nota sabado 3: ',sab3[sab3[df.columns[3]] > 8])
+        #st.write('Maior Nota sabado 4: ',sab4[sab4[df.columns[4]] >= 9])
 
     btn_piores = st.sidebar.button("Nem na Facol")
     if btn_piores:
         st.write('Menor Nota sabado 1: ',sab1[sab1.iloc[:, 1] <= 4])
-        st.write('Menor Nota sabado 2: ',sab2[sab2.iloc[:, 1] < 4])
-        st.write('Menor Nota sabado 3: ',sab3[sab3.iloc[:, 1] <= 4])
-        st.write('Menor Nota sabado 4: ',sab4[sab4.iloc[:, 1] < 3])
+        #st.write('Menor Nota sabado 2: ',sab2[sab2.iloc[:, 1] < 4])
+        #st.write('Menor Nota sabado 3: ',sab3[sab3.iloc[:, 1] <= 4])
+        #st.write('Menor Nota sabado 4: ',sab4[sab4.iloc[:, 1] < 3])
 
 
     # inserindo um botão na tela
     btn_Melhor_mes = st.sidebar.button("Melhor jogador do mês")
     if btn_Melhor_mes:
-        st.write('Melhores jogadorores de Fevereiro: ',maior[maior[df.columns[6]] > 7][:3])
+        st.write('Melhores jogadorores de Fevereiro: ',maior[maior[df.columns[6]] > 8][:3])
 
     btn_Pior_mes = st.sidebar.button("Pior jogador do mês")
     if btn_Pior_mes:
-        st.write('O importante é participar: ',pior[pior[df.columns[6]] <= 4][:3])
+        st.write('O importante é participar: ',pior[pior[df.columns[6]] <= 5][:3])
         
 
 elif choice == 'Abril-21':
