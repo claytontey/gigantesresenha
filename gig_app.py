@@ -249,7 +249,7 @@ elif choice == 'Março-21':
 
     btn_Pior_mes = st.sidebar.button("Pior jogador do mês")
     if btn_Pior_mes:
-        st.write('O importante é participar: ',pior[pior[df.columns[6]] < 4.9[:1])
+        st.write('O importante é participar: ',pior[pior[df.columns[6]] < 4.9][:1])
         
 
 elif choice == 'Abril-21':
