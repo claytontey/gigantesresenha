@@ -32,3 +32,4 @@ enableCORS = false
 ## Acesso e contato:
 
 O acesso ao *App* pode ser realizado através o [link](https://gigantesresenha.herokuapp.com/). Para contatos, enviar mensagem para [Clayton](https://www.linkedin.com/in/clayton-pereira-72491648/).
+
